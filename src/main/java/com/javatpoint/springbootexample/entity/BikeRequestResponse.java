@@ -2,30 +2,30 @@ package com.javatpoint.springbootexample.entity;
 
 public class BikeRequestResponse {
 
-    int stationID;
-    int portID;
+    String stationID;
+    String portID;
 
     public BikeRequestResponse() {
     }
 
-    public BikeRequestResponse(int stationID, int portID) {
+    public BikeRequestResponse(String stationID, String portID) {
         this.stationID = stationID;
         this.portID = portID;
     }
 
-    public int getStationID() {
+    public String getStationID() {
         return stationID;
     }
 
-    public void setStationID(int stationID) {
+    public void setStationID(String stationID) {
         this.stationID = stationID;
     }
 
-    public int getPortID() {
+    public String getPortID() {
         return portID;
     }
 
-    public void setPortID(int portID) {
+    public void setPortID(String portID) {
         this.portID = portID;
     }
 }

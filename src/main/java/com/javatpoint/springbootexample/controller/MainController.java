@@ -27,17 +27,18 @@ public class MainController {
     @RequestMapping("/enterRequest")
     public String getEnterRequest() {
 
-        BikeRequests bikeRequests1 = new BikeRequests(1, 1, 2, 16);
+        BikeRequests bikeRequests1 = new BikeRequests("1", "1", "2", "16");
         bikeRequests.add(bikeRequests1);
         return "Data inserted";
     }
 
     @ResponseBody
     @RequestMapping("/enterRequest/{userId}/{bikeId}/{stationId}/{portId}")
-    public String getEnterRequest(@PathVariable String userId, @PathVariable String bikeId, @PathVariable int stationId, @PathVariable int portId) {
+    public String getEnterRequest(@PathVariable String userId, @PathVariable String bikeId, @PathVariable String stationId, @PathVariable String portId) {
 
-        BikeRequests bikeRequests1 = new BikeRequests(Integer.getInteger(userId), stationId, portId, Integer.getInteger(bikeId));
+        BikeRequests bikeRequests1 = new BikeRequests(userId, stationId, portId, bikeId);
         bikeRequests.add(bikeRequests1);
+        System.out.println("Bike inserted: " + bikeRequests1);
         return "Data inserted";
     }
 
@@ -56,12 +57,12 @@ public class MainController {
 
     @ResponseBody
     @RequestMapping("/bikeRequest/{stationId}")
-    public ResponseEntity<BikeRequestResponse> getBikeRequest(@PathVariable int stationId) {
+    public ResponseEntity<BikeRequestResponse> getBikeRequest(@PathVariable String stationId) {
         System.out.println("Station ID: " + stationId);
         if (bikeRequests.size() != 0){
             for (int i = 0; i < bikeRequests.size(); i++) {
-                if (bikeRequests.get(i).getStationID() == stationId){
-                    int portCurrentID = bikeRequests.get(i).getPortID();
+                if (bikeRequests.get(i).getStationID().equals(stationId)){
+                    String portCurrentID = bikeRequests.get(i).getPortID();
                     bikeRequests.remove(i);
                     return ResponseEntity.ok(new BikeRequestResponse(stationId, portCurrentID));
                 }
@@ -81,7 +82,7 @@ public class MainController {
 
     @ResponseBody
     @RequestMapping(value = "/bikeAllInfo/{bikeId}/{stationId}/{portId}", method = RequestMethod.GET)
-    public ResponseEntity getAllBikeInfo(@PathVariable String bikeId, @PathVariable int stationId, @PathVariable int portId) {
+    public ResponseEntity getAllBikeInfo(@PathVariable String bikeId, @PathVariable String stationId, @PathVariable String portId) {
 
         System.out.println("Bike ID: " + bikeId + " | Station ID: " + stationId + " | Port ID: " + portId);
 

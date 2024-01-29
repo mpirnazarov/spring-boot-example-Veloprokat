@@ -3,13 +3,13 @@ package com.javatpoint.springbootexample.entity;
 import java.time.LocalDateTime;
 
 public class BikeRequests {
-    int userID;
-    int stationID;
-    int portID;
-    int bikeID;
+    String userID;
+    String stationID;
+    String portID;
+    String bikeID;
     LocalDateTime dateTimeTaken;
 
-    public BikeRequests(int userID, int stationID, int portID, int bikeID) {
+    public BikeRequests(String userID, String stationID, String portID, String bikeID) {
         this.userID = userID;
         this.stationID = stationID;
         this.portID = portID;
@@ -17,35 +17,35 @@ public class BikeRequests {
         this.dateTimeTaken = LocalDateTime.now();
     }
 
-    public int getUserID() {
+    public String getUserID() {
         return userID;
     }
 
-    public void setUserID(int userID) {
+    public void setUserID(String userID) {
         this.userID = userID;
     }
 
-    public int getStationID() {
+    public String getStationID() {
         return stationID;
     }
 
-    public void setStationID(int stationID) {
+    public void setStationID(String stationID) {
         this.stationID = stationID;
     }
 
-    public int getPortID() {
+    public String getPortID() {
         return portID;
     }
 
-    public void setPortID(int portID) {
+    public void setPortID(String portID) {
         this.portID = portID;
     }
 
-    public int getBikeID() {
+    public String getBikeID() {
         return bikeID;
     }
 
-    public void setBikeID(int bikeID) {
+    public void setBikeID(String bikeID) {
         this.bikeID = bikeID;
     }
 
@@ -55,5 +55,16 @@ public class BikeRequests {
 
     public void setDateTimeTaken(LocalDateTime dateTimeTaken) {
         this.dateTimeTaken = dateTimeTaken;
+    }
+
+    @Override
+    public String toString() {
+        return "BikeRequests{" +
+                "userID=" + userID +
+                ", stationID=" + stationID +
+                ", portID=" + portID +
+                ", bikeID=" + bikeID +
+                ", dateTimeTaken=" + dateTimeTaken +
+                '}';
     }
 }
